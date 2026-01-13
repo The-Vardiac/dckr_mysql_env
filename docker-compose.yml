@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0.44
+    container_name: mysql-8.0.44-cnt
+    ports:
+      - "3309:3306"
+    env_file:
+      - ".env"
+    volumes:
+      - mysql_dckr_data:/var/lib/mysql
+    networks:
+      - laravel-env-net
+      - sandbox-net
+
+networks:
+  laravel-env-net:
+    external: true
+  sandbox-net:
+    external: true
+
+volumes:
+  mysql_dckr_data:
